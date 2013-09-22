@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QkWBzEiDGSfsAAAAVhJREFUOMvFkj1IgmEUhR9DiwYh8yNUwjToZ8jBwagWt7YcHGuKcJFocMvCoUFqaWgJTAIVHBrSQHSpzShUCDQihQyiKAIRNIsSsSEQv8GfIOhM772c83Dv5ZWMbN/VaZLvxNJcMqFUNN6fGi06TxAAmVKKNWZByi+k8wSJ+JfRaxWEotdsTh93D6gNqQFQDvRjXw9TrAoA3QHUkTgA5tlR9v2XjTCARHPqFd1gpW4VhYWpQwIuFV9Xe41eOpVAkEu49cx0niDgUhF2L5C/N7Bqt5FOJSj6xpBWC1DJ0tMuHDuK4tuY5yyZBaDXuPazd7XQ8LQEfJTfACi8PqMX+nAcZFjceaLsHRT5pPJSXNTYMj4AYHKPs2sz4DjIAJA05yAKpcmaGNBqgqQzh8kNoblHhmXvLddse4OkM9c23BHQjST1c0H0D0yZC5Gh8pIX1Te5pb+d4P8B37wEZwhlXKrcAAAAAElFTkSuQmCC" />
+		<title>Sweet colors</title>
+
+		<script>
+var colors = Array(
+	"#222222",
+	"#1f88dd", "#7dbbee",
+	"#ffc514", "#ffdf7e",
+	"#ff5a14", "#ffa47e",
+	"#32cd32", "#86e686",
+	"#fbfbd0",
+	// FLAT UI
+	"separator",
+	"#1abc9c", "#16a085",
+	"#2ecc71", "#27ae60",
+	"#3498db", "#2980b9",
+	"#9b59b6", "#8e44ad",
+	"#34495e", "#2c3e50",
+	"#f1c40f", "#f39c12",
+	"#e67e22", "#d35400",
+	"#e74c3c", "#c0392b",
+	"#ecf0f1", "#bdc3c7",
+	"#95a5a6", "#7f8c8d"
+);
+		</script>
+
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	background-color: #444;
+	transition: background-color 2s ease;
+}
+
+#boxes {
+	padding: 0 250px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#boxes li.color {
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	margin: 25px;
+	color: #fff;
+	border: 10px solid rgba(255, 255, 255, 0.5);
+	border-radius: 100px;
+	line-height: 100px;
+	letter-spacing: 0.1em;
+	cursor: pointer;
+	text-shadow: 0 0 10px #000;
+	transition: border-color 1s ease;
+}
+#boxes li.color:hover {
+	border: 10px solid rgba(255, 255, 255, 0.2);
+}
+#boxes li.color:active,
+#boxes li.color.active {
+	border-color: transparent;
+	background: none !important;
+}
+
+#boxes li.separator {
+	display: block;
+	height: 1px;
+	background: rgba(255, 255, 255, 0.5);
+	box-shadow: 0 0 3px #fff;
+}
+
+p.thanks {
+	margin: 10px 250px 10px 0;
+	color: #fff;
+	font-size: 0.7em;
+	line-height: 2em;
+	text-align: right;
+	text-shadow: 0 0 3px #000;
+	font-style: italic;
+}
+p.thanks a {
+	color: #fff;
+}
+p.thanks a.copyright,
+p.thanks a:hover {
+	text-decoration: none;
+}
+
+</style>
+	</head>
+	<body>
+
+<ul id="boxes">
+
+</ul>
+
+<p class="thanks">
+	Thanks to <a href="http://flatuicolors.com/" target="_blank">Flat UI Colors</a> and <a href="http://colorschemedesigner.com/" target="_blank">Color Scheme Designer</a><br />
+	<a class="copyright" href="http://copyheart.org/" target="_blank">♡ Copying is an act of love. Please copy.</a>
+</p>
+
+<script>
+function selectText(element) {
+    var doc = document;
+    var text = doc.getElementById(element);    
+
+    if (doc.body.createTextRange) { // ms
+        var range = doc.body.createTextRange();
+        range.moveToElementText(text);
+        range.select();
+    } else if (window.getSelection) { // moz, opera, webkit
+        var selection = window.getSelection();            
+        var range = doc.createRange();
+        range.selectNodeContents(text);
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+}
+
+var list = document.getElementById("boxes");
+var active_color = null;
+
+for (var i = 0; i < colors.length; i++) {
+	var li = document.createElement("li");
+
+	if (colors[i] == "separator") {
+		li.setAttribute("class", "separator");
+	} else {
+		li.setAttribute("class", "color");
+		li.style.backgroundColor = colors[i];
+		li.id = colors[i];
+		li.innerHTML = colors[i];
+
+		li.onclick = function(e) {
+			document.body.style.backgroundColor = e.target.id;
+
+			if (active_color != null) {
+				active_color.setAttribute("class", "color");
+			}
+			active_color = e.target;
+			e.target.setAttribute("class", "color active");
+
+			selectText(e.target.id);
+		};
+	}
+
+	list.appendChild(li);
+};
+</script>
+	</body>
+</html>
