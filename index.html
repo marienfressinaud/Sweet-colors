@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta name="viewport" content="initial-scale=1.0" />
 		<meta charset="utf-8">
 		<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QkWBzEiDGSfsAAAAVhJREFUOMvFkj1IgmEUhR9DiwYh8yNUwjToZ8jBwagWt7YcHGuKcJFocMvCoUFqaWgJTAIVHBrSQHSpzShUCDQihQyiKAIRNIsSsSEQv8GfIOhM772c83Dv5ZWMbN/VaZLvxNJcMqFUNN6fGi06TxAAmVKKNWZByi+k8wSJ+JfRaxWEotdsTh93D6gNqQFQDvRjXw9TrAoA3QHUkTgA5tlR9v2XjTCARHPqFd1gpW4VhYWpQwIuFV9Xe41eOpVAkEu49cx0niDgUhF2L5C/N7Bqt5FOJSj6xpBWC1DJ0tMuHDuK4tuY5yyZBaDXuPazd7XQ8LQEfJTfACi8PqMX+nAcZFjceaLsHRT5pPJSXNTYMj4AYHKPs2sz4DjIAJA05yAKpcmaGNBqgqQzh8kNoblHhmXvLddse4OkM9c23BHQjST1c0H0D0yZC5Gh8pIX1Te5pb+d4P8B37wEZwhlXKrcAAAAAElFTkSuQmCC" />
 		<title>Sweet colors</title>
 
 		<script>
 var colors = Array(
-	"#222222",
-	"#1f88dd", "#7dbbee",
+	"#2c2c2c",
+	"#1f88dd", "#47CCF3",
 	"#ffc514", "#ffdf7e",
 	"#ff5a14", "#ffa47e",
 	"#32cd32", "#86e686",
-	"#fbfbd0",
+	"#fbfbd0", "#d84c7e",
+	"#86abd9",
 	// FLAT UI
 	"separator",
 	"#1abc9c", "#16a085",
@@ -96,6 +98,24 @@ p.thanks a {
 p.thanks a.copyright,
 p.thanks a:hover {
 	text-decoration: none;
+}
+
+@media(max-width: 840px) {
+	#boxes {
+		padding: 0;
+	}
+
+	#boxes li.color {
+		width: 75px;
+		height: 75px;
+		margin: 10px;
+		line-height: 75px;
+		font-size: 0.8rem;
+	}
+
+	p.thanks {
+		margin: 10px 5px 10px 0;
+	}
 }
 
 </style>
